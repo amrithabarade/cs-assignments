@@ -1,0 +1,211 @@
+
+Assignment-2
+===========
+
+This project contains java code to take in different attributes (like height, weight, marks etc) of a student and provide comments on various aspects like whether the student is short, 
+or has to improve in his/her studies etc.
+
+The classes written below are used to demonstrate various key priciples of Object Oriented Programming in Java listed below:
+
+1) Inheritance (child class stuaca inherits from parent class student and adds its own variables)
+
+2) Interface (there are two interfaces named A and B that implements two different sets of methods)
+
+2) Usage of constructors (constructor is used to initialize the registration number of the student)
+
+3) Overloading of methods (super keyword is used to call the parent class method)
+
+4) Usage of static and final variables (variables hc and wg which hold the feet and grams multipliers. Final so that they cannot be changed further. Static so that they are availabe without instantiation)
+
+
+============================================================
+package amrijava;
+
+public interface A 
+	{
+		void printdetails();
+	}
+
+package amrijava;
+
+public interface B extends A
+	{
+		void marksget(int a, int b, int c);
+		int  totalcal();
+	}
+
+package amrijava;
+import java.util.Scanner;
+
+abstract public class student implements B
+{
+	int regno;
+	static final int hc = 12;
+	static final int wg = 1000;
+	
+	static public int heightincm(int f,int i)
+		{
+			return (int) ((i+f*hc)*2.5);
+		}
+	static public int weightingrams(int k)
+		{
+			return k*wg;
+		}
+	public void printdetails()
+		{
+	        int feet,inches,kilos;
+	        
+	        System.out.println("\n Enter the height of the student in terms of feet and inches: \n");
+	        Scanner inputsa=new Scanner(System.in);
+	        
+	        feet=inputsa.nextInt();
+	        inches=inputsa.nextInt();
+			
+	        int heightincmvalue=heightincm(feet,inches);
+			System.out.println("\n The height of the student is: " + heightincmvalue);
+			
+			if(heightincmvalue<150)
+				{
+					System.out.println("\n The student is short. \n ");
+				}
+			else
+				{
+					System.out.println("\n The student is tall. \n ");
+				}
+			System.out.println(" \n Enter the weight of the student in kilos: \n");
+			Scanner inputsb=new Scanner(System.in);
+			kilos=inputsb.nextInt();
+			
+			int weightingramsvalue=weightingrams(kilos);
+			System.out.println("\n The weight of the student in grams is: " + weightingramsvalue);
+			
+			if(weightingramsvalue > 50000)
+				{
+					System.out.println("\n The student is overweight. \n");
+				}
+			else
+				{
+					System.out.println("\n The student is underweight. \n ");
+				}
+		}
+}
+
+
+package amrijava;
+import java.util.Scanner;
+
+public class stuaca extends student
+{
+	int m1,m2,m3,total;
+	String studentName;
+	public static int regno;
+	
+	stuaca(int x)
+	{
+		regno=x;
+		System.out.println("\n The name of the student is Amritha Barade ");
+		System.out.println("\n The registration number of the student is "+regno);
+		System.out.println("\n Now let us look at the diffent attributes of the student ");
+	}
+	
+	public void marksget(int a,int b,int c)
+	{
+		m1=a;
+		m2=b;
+		m3=c;
+	}
+	
+	public int totalcal()
+	{
+		total=m1+m2+m3;
+		System.out.println(total);
+              
+	 try
+	{
+		total=0/0;
+	}
+	catch(Exception e)
+	{
+		System.out.println(" This is a dummy try block to demonstrate try-catch functionality");
+	} 
+	 return total;
+	}
+	public void printdetails()
+	{
+		super.printdetails();
+        int mark1,mark2,mark3;
+        System.out.println("\n Enter marks for the student in 3 subjects (0 to 100):");
+        Scanner inputsc=new Scanner(System.in);
+        mark1=inputsc.nextInt();
+        mark2=inputsc.nextInt();
+        mark3=inputsc.nextInt();
+        marksget(mark1,mark2,mark3);      
+        System.out.println("\n Total of marks in all 3 subjects is: ");
+		totalcal();
+		System.out.println("\n");
+
+		if(total>250)
+			{
+				System.out.println("\n The student is a good student");
+			}
+		else
+			{
+				System.out.println("\n The student has to improve");
+			}
+	}
+	public static void main(String[] args)
+	{
+		stuaca sq=new stuaca(12345);
+        sq.printdetails();
+	} 
+}
+	
+
+==================================================== 
+
+PROGRAM OUTPUT:
+
+ The name of the student is Amritha Barade 
+
+ The registration number of the student is 12345
+
+ Now let us look at the diffent attributes of the student 
+
+ Enter the height of the student in terms of feet and inches: 
+
+5
+6
+
+ The height of the student is: 165
+
+ The student is tall. 
+ 
+ 
+ Enter the weight of the student in kilos: 
+
+65
+
+ The weight of the student in grams is: 65000
+
+ The student is overweight. 
+
+
+ Enter marks for the student in 3 subjects (0 to 100):
+90
+95
+92
+
+ Total of marks in all 3 subjects is: 
+277
+ This is a dummy try block to demonstrate try-catch functionality
+
+
+
+ The student is a good student
+
+=======================================================
+Submission By
+Amritha Barade
+2017103055
+
+========================================================
